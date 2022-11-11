@@ -42,7 +42,7 @@ function App() {
       <div className="grid">
         {guesses.map((row: any, rowIdx: number) =>
           row.map((box: any, boxIdx: number) => {
-            return <input key={rowIdx + boxIdx} className="box" />;
+            return <input type="text" key={rowIdx + boxIdx} className="box" />;
           })
         )}
       </div>
