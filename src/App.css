@@ -21,9 +21,13 @@
   height: 100%;
   border: none;
   background-color: #ddd;
-  caret-color: #eee;
+  caret-color: transparent;
+  font-size: 6rem;
+  text-indent: calc(50% - 1.5rem);
+  transition: 0.2s;
 }
 
 .box:focus {
   outline: none;
+  transform: scale(0.95);
 }
