@@ -16,6 +16,7 @@ function App() {
 
   const [answer, setAnswer] = useState();
   const [guesses, setGuesses] = useState(generateGuesses());
+  const [editingInput, setEditingInput] = useState({ row: 0, box: 0 });
 
   let words: any;
 
@@ -33,6 +34,7 @@ function App() {
   useEffect(() => {
     if (guesses) {
       console.log(guesses);
+      setEditingInput({ row: 0, box: 1 });
     }
   }, [guesses]);
 
@@ -42,9 +44,6 @@ function App() {
         row.map((box: any, prevBoxIdx: number) => {
           if (rowIdx === prevRowIdx && boxIdx === prevBoxIdx) {
             return { ...box, char: e.target.value };
-          }
-          if (rowIdx === prevRowIdx + 1 && boxIdx === prevBoxIdx) {
-            // focus on next box
           }
           return box;
         })
@@ -63,7 +62,7 @@ function App() {
                 type="text"
                 key={rowIdx + boxIdx}
                 className="box"
-                value={guesses[rowIdx][boxIdx].char}
+                value={box.char}
                 onChange={(e) => handleType(e, rowIdx, boxIdx)}
                 maxLength={1}
                 autoFocus={rowIdx === 0 && boxIdx === 0 ? true : false}
